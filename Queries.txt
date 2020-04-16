@@ -1,0 +1,26 @@
+1. create table users(Userid varchar(10) primary key,Pswd varchar (15),
+Username varchar(40),Usertype varchar(30),Userstatus varchar(20) default 'Active',
+Email varchar(40),SecurityQuestion varchar(50),Answer varchar(20));
+2. create table accounts(Accno int primary key,Accname varchar(40),
+Acctype varchar(20),Balance float,Opendate varchar(15),
+SecurityQuestion varchar(50),Answer varchar(20),Mobile varchar(10));
+3. create table acctransact(Transno int primary key,Transdate varchar(15),
+Accno int foreign key references accounts(Accno),Transtype varchar(10),Amount int);
+4. insert into users values('m101','rakesh10','Rakesh Sharma','Manager','Active','rakesh10@gmail.com','Which is your Fav Colour?','Black');
+5. insert into users values('cash102','krishna','Krishna Joshi','Cashier','Active','krishna@gmail.com','Which is your Fav Colour?','Red');
+6. insert into users values('cus001','chetan','Chetan Shukla','Customer','Active','chetan@gmail.com','Which is your Fav Colour?','Blue');
+7. insert into accounts(1001,'Vodafone','Current',165000.7,'30/1/2019','Which is your Fav Colour?','Black','9876543210');
+8. insert into accounts(1002,'Airtel','Fixed',180000.7,'17/4/2019','Which is your Fav City?','Pune','8765434510');
+9. insert into accounts(1007,'DishTV','Current',230000.4,'28/03/2020','Which is your Fav City?','Mumbai','8885223569');
+10.  insert into accounts(1005,'MSEDCL','Saving',597000,'01/1/2020','Which is your Fav Colour?','Pink','9564712308');
+11. insert into acctransact values(1,'01/01/2020',1001,'Deposit',1000);
+12. delete from accounts where Accno=1005;
+13. create procedure newacc
+@no int,@nm varchar(40),@ty varchar(15),@bal float,@od date,@sq varchar(40),@an varchar(15),@mo varchar(10)
+as
+begin
+insert into accounts values(@no,@nm,@ty,@bal,@od,@sq,@an,@mo);
+end
+
+14. exec newacc 1002,'Airtel,'Fixed','18000.7','17/4/2019','Which is your Fav City?','Pune','8765434510';
+
